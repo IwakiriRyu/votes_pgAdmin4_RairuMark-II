@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>ログイン TapCode</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+	<div class="container">
+		<h1>ログイン</h1>
+		<form method="post" action="/login">
+			<div class="field">
+				<label for="username">ユーザー名:</label>
+				<input type="text" id="username" name="username" placeholder="ユーザ名" required maxlength="20" autocomplete="off">
+			</div>
+			<div class="field">
+				<label for="password">パスワード:</label>
+				<input type="password" id="password" name="password" placeholder="パスワード" required minlength="8">
+			</div>
+			<div class="field">
+				<input type="submit" value="ログイン" class="button is-primary">
+			</div>
+		</form>
+		<p>アカウントを持っていない場合は <a href="/register">新規登録</a> してください。</p>
+
+		{% if error_message %}
+		<div class="error_message">
+			{{ error_message }}
+		</div>
+		{% endif %}
+	</div>
+</body>
+</html>

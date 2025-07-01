@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>TapCode 新規登録</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>新規登録</h1>
+        <form method="POST" action="/register">
+		<div class="field">
+		    <label for="username">ユーザー名:</label>
+		    <input 
+			  type="text" 
+			  id="username" 
+			  name="username" 
+			  placeholder="ユーザ名" 
+			  required 
+			  maxlength="20" 
+			  autocomplete="off">
+		</div>
+		<div class="field">
+		    <label for="password">パスワード:</label>
+		    <input 
+			  type="password" 
+			  id="password" 
+			  name="password" 
+			  placeholder="パスワード" 
+			  required 
+			  minlength="8">
+		</div>
+		<div class="field">
+		    <input type="submit" value="登録" class="button is-primary">
+		</div>
+	  </form>	  
+        <p>すでにアカウントをお持ちの場合は<a href="/login">ログイン</a>してください。</p>
+    </div>
+</body>
+</html>

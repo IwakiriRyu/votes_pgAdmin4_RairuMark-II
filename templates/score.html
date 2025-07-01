@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TapCode 結果</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>クイズ終了</h1>
+        <p class="score-text">あなたは{{ score }}問正解しました！</p>
+        <a href="/"><button>ホーム画面に戻る</button></a>
+    </div>
+</body>
+</html>

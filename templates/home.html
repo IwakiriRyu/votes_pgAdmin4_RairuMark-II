@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>TapCode - ホーム</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+</head>
+<body>
+	<h1>TapCode クイズへようこそ！</h1>
+	
+	<main>
+		<div class="navigation">
+			<a href="/register"><button>新規登録/ログイン</button></a>
+			<a href="{{url_for('quiz')}}"><button>ゲームを始める</button></a>
+		</div>
+	</main>
+</body>
+</html>

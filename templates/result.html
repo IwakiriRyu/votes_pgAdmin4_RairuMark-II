@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TapCode 結果</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="question-number" id="question-number">第{{ question_count + 1 }}問</div>
+        <h1>{{ feedback }}</h1>
+        <p>{{ explanation }}</p>
+        <form action="{{url_for('next_question')}}" method="POST">
+            {% if question_count == 9 %}
+			<button type="submit">結果を見る</button>
+		{% else %}
+			<button type="submit">次の問題へ</button>
+		{% endif %}
+        </form>
+    </div>
+</body>
+</html>

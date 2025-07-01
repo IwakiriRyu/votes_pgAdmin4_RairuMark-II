@@ -1,0 +1,25 @@
+#データベース初期化
+def init_db():
+    with get_user_db() as db:
+        db.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                username TEXT UNIQUE NOT NULL,
+                password_hash TEXT NOT NULL
+            )
+        """)
+        db.commit()
+        print("ユーザーデータが初期化されました。")
+
+    with get_quiz_db() as db: #クイズデータ初期化
+        db.execute("""
+            CREATE TABLE IF NOT EXISTS questions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                question TEXT NOT NULL,
+                options TEXT NOT NULL,
+                answer TEXT NOT NULL,
+                explanation TEXT NOT NULL
+            )
+        """)
+        db.commit()
+        print("クイズデータが初期化されました。")

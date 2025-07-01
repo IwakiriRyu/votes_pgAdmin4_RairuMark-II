@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TapCode Quiz</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="question-number" id="question-number">第{{ question_count + 1 }}問</div>
+        <h1>{{question}}</h1>
+        <div class="options" data-option-count="{{options|length}}">
+            {% for option in options %}
+                <button type="button" class="option-button" onclick="selectOption(this, '{{option}}')">{{option}}</button>
+            {% endfor %}
+        </div>
+        <form id="answer-form" action="{{url_for('quiz')}}" method="POST">
+            <input type="hidden" name="option" id="selected-option">
+            <input type="hidden" name="question_id" value="{{question_id}}">
+            <button id="submit-button" type="submit" onclick="return checkSelection()">回答する</button>
+        </form>
+    </div>
+    <script>
+        function selectOption(button, option) {
+            document.querySelectorAll('.option-button').forEach(btn => {
+                btn.style.backgroundColor = '#0056b3';
+            });
+            button.style.backgroundColor = '#cc3700';
+            document.getElementById('selected-option').value = option;
+        }
+        function checkSelection() {
+            const selectedOption = document.getElementById('selected-option').value;
+            if (!selectedOption) {
+                alert('選択肢を選んでください。');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

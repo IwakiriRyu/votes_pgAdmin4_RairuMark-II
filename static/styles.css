@@ -1,0 +1,141 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #0800ff;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	text-align: center;
+	font-weight: bold;
+  }
+  
+  .header {
+	margin-bottom: 20px;
+  }
+  
+  .header p {
+	font-size: 18px;
+	color: white;
+	margin: 10px 0;
+  }
+  
+  h1 {
+	color: white;
+	margin-bottom: 20px;
+	font-size: 50px;
+  }
+  
+  .navigation {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-top: 20px;
+  }
+  
+  button {
+	background-color: #ff4500;
+	color: white;
+	padding: 15px 40px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+	transition: background-color 0.3s ease;
+	width: 350px;
+  }
+  
+  button:hover {
+	background-color: #cc3700;
+  }
+  
+  button:disabled {
+	background-color: #666;
+	cursor: not-allowed;
+  }
+  
+  .container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+	position: relative; /* question-number の絶対配置用 */
+  }
+  
+  .question-number {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	color: white; /* 白文字 */
+  }
+  
+  .option-button {
+	background-color: #0056b3;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 15px;
+	width: 100%;
+	margin: 5px;
+  }
+  
+  .option-button:hover {
+	background-color: #004185;
+  }
+  
+  #submit-button {
+	background-color: #0056b3;
+	color: white;
+	padding: 15px 40px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+	width: 250px;
+	margin-top: 20px;
+  }
+  
+  #submit-button:hover {
+	background-color: #003d7a;
+  }
+  
+  .options {
+	display: grid;
+	grid-template-columns: 1fr 1fr; 
+	gap: 90px;
+	width: 90%;
+	margin: 0 auto; 
+  }
+  
+  .options[data-option-count="4"] {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr); 
+	grid-gap: 10px;
+	margin-bottom: 20px;
+  }
+  
+  .options[data-option-count="3"] {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); 
+	grid-gap: 10px;
+	margin-bottom: 20px;
+  }
+  
+  .error-message {
+	color: red;
+	font-size: 14px;
+	margin-top: 5px;
+  }
+  
+  .score-text {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+  }
