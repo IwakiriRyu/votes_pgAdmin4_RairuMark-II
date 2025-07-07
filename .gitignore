@@ -28,3 +28,7 @@ Jupyter Notebook (もし使う場合)
 
 IDE specific files (例: VS Code)
 .vscode/
+
+psql 'postgresql://neondb_owner:npg_OGLNtKz4V8YQ@ep-damp-fog-a1y2sylm-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+
+.env.local

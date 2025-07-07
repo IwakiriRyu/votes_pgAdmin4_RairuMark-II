@@ -3,6 +3,9 @@ import psycopg2
 import psycopg2.extras
 from psycopg2 import Error
 import hashlib, base64, secrets
+import os
+from dotenv import load_dotenv
+load_dotenv(".env.local")
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
@@ -11,11 +14,12 @@ app.secret_key = secrets.token_hex(16)
 def get_db():
     try:
         conn = psycopg2.connect(
-            host="localhost",
-            database="postgres",
-            user="iwakiriryu",
-            password="racky0718",
-            port=5432
+            host=os.getenv("DB_HOST"),
+            database=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            port=os.getenv("DB_PORT"),
+            sslmode=os.getenv("DB_SSLMODE")
         )
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         return conn, cursor
