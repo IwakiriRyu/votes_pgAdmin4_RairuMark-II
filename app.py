@@ -5,27 +5,18 @@ from psycopg2 import Error
 import hashlib, base64, secrets
 import os
 from dotenv import load_dotenv
+
 load_dotenv(".env.local")
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
+db_url = os.environ.get("DATABASE_URL")
 
-# データベース接続
+# ✅ 修正済み get_db 関数
 def get_db():
-    try:
-        conn = psycopg2.connect(
-            host=os.getenv("DB_HOST"),
-            database=os.getenv("DB_NAME"),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),
-            port=os.getenv("DB_PORT"),
-            sslmode=os.getenv("DB_SSLMODE")
-        )
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        return conn, cursor
-    except psycopg2.Error as e:
-        print(f"Error connecting to database: {e}")
-        raise e
+    conn = psycopg2.connect(db_url, sslmode='require')
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    return conn, cursor
 
 # パスワード管理
 def hash_password(password):
